@@ -376,35 +376,3 @@ class FramePerfumes ( wx.Frame ):
 		event.Skip()
 
 
-###########################################################################
-## Class MyFrame8
-###########################################################################
-
-class MyFrame8 ( wx.Frame ):
-
-	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 500,300 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
-
-		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
-
-		bSizer16 = wx.BoxSizer( wx.VERTICAL )
-
-		self.m_button7 = wx.Button( self, wx.ID_ANY, u"MyButton", wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer16.Add( self.m_button7, 0, wx.ALL, 5 )
-
-		self.m_button8 = wx.Button( self, wx.ID_ANY, u"MyButton", wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer16.Add( self.m_button8, 0, wx.ALL, 5 )
-
-		self.m_bpButton1 = wx.BitmapButton( self, wx.ID_ANY, wx.NullBitmap, wx.DefaultPosition, wx.DefaultSize, wx.BU_AUTODRAW|0 )
-		bSizer16.Add( self.m_bpButton1, 0, wx.ALL, 5 )
-
-
-		self.SetSizer( bSizer16 )
-		self.Layout()
-
-		self.Centre( wx.BOTH )
-
-	def __del__( self ):
-		pass
-
-
