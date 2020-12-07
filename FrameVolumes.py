@@ -11,8 +11,7 @@ class FrameVolumes(guiperfumes.FrameVolumes):
 
     # Handlers for FrameVolumes events.
     def fecharFrame(self, event):
-        # TODO: Implement fecharFrame
-        pass
+        self.Show(False)
 
     def adicionarVolume(self, event):
         # TODO: Implement adicionarVolume

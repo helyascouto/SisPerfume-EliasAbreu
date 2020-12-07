@@ -1,5 +1,5 @@
 import sqlite3
-path=r'C:\Users\BUTFIRE\PycharmProjects\SisPerfume'
+path=r'C:\Users\BUTFIRE\PycharmProjects\SisPerfume-EliasAbreu'
 #O nome do banco criado foi dbperfumes-v2.db. Se você criar com outro nome, troque aqui
 banco=sqlite3.connect(path+r'\dbperfumes-v2.db')
 '''

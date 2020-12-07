@@ -3,6 +3,7 @@
 import guiperfumes
 from FrameMarca import FrameMarca
 from FramePerfumes import FramePerfumes
+from FrameVolumes import FrameVolumes
 
 
 # Implementing FramePrincipal
@@ -17,25 +18,28 @@ class FramePrincipal(guiperfumes.FramePrincipal):
         self.Destroy()
 
     def abrirMarca(self, event):
+
         if not self.frameMarca:
-         self.frameMarca = FrameMarca(self)
-        self.frameMarca.Show(True)
+            self.FrameMarca = FrameMarca(self)
+        self.FrameMarca.Show(True)
 
     def abrirFixacoes(self, event):
-        # TODO: Implement abrirFixacoes
-        pass
+       pass
 
     def abrirVolumes(self, event):
-        # TODO: Implement abrirVolumes
 
-        pass
+        if not self.frameMarca:
+            self.FrameVolumes = FrameVolumes(self)
+        self.FrameVolumes.Show(True)
 
-    def abrirPerfume(self, event):
-        if not self.framePerfume:
-            self.framePerfume = FramePerfumes(self)
-        self.framePerfume.Show(True)
 
-    def fecharApp(self, event):
-        # TODO: Implement fecharApp
+def abrirPerfume(self, event):
+    if not self.framePerfume:
+        self.framePerfume = FramePerfumes(self)
+    self.framePerfume.Show(True)
 
-        pass
+
+def fecharApp(self, event):
+    # TODO: Implement fecharApp
+
+    pass
