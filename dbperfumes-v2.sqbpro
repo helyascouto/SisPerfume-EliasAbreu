@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:\Users\BUTFIRE\PycharmProjects\SisPerfume-EliasAbreu\dbperfumes-v2.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="0"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="2068"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,16:mainEssencia_Perfume"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1"> CREATE TABLE IF NOT EXISTS &quot;Essencia_Perfume&quot; (
+	&quot;id_perfume&quot;	INTEGER,
+	&quot;id_essencia&quot;	INTEGER,
+	PRIMARY KEY(&quot;id_perfume&quot;,&quot;id_essencia&quot;),
+	FOREIGN KEY(&quot;id_perfume&quot;) REFERENCES &quot;Perfumes&quot;(&quot;id&quot;)
+);
+CREATE TABLE IF NOT EXISTS &quot;Essencias&quot; (
+	&quot;id&quot;	INTEGER,
+	&quot;nome&quot;	TEXT,
+	PRIMARY KEY(&quot;id&quot; AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS &quot;Fixacoes&quot; (
+	&quot;id&quot;	INTEGER,
+	&quot;nome&quot;	TEXT,
+	PRIMARY KEY(&quot;id&quot; AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS &quot;Marcas&quot; (
+	&quot;id&quot;	INTEGER,
+	&quot;nome&quot;	TEXT UNIQUE,
+	PRIMARY KEY(&quot;id&quot; AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS &quot;Volumes&quot; (
+	&quot;id&quot;	INTEGER,
+	&quot;nome&quot;	TEXT UNIQUE,
+	PRIMARY KEY(&quot;id&quot; AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS &quot;Perfumes&quot; (
+	&quot;id&quot;	INTEGER,
+	&quot;nome&quot;	TEXT,
+	&quot;quantidade&quot;	INTEGER,
+	&quot;id_volume&quot;	INTEGER,
+	&quot;id_marca&quot;	INTEGER,
+	&quot;id_fixacao&quot;	INTEGER,
+	FOREIGN KEY(&quot;id_marca&quot;) REFERENCES &quot;Marcas&quot;(&quot;id&quot;),
+	FOREIGN KEY(&quot;id_fixacao&quot;) REFERENCES &quot;Fixacoes&quot;(&quot;id&quot;),
+	PRIMARY KEY(&quot;id&quot; AUTOINCREMENT),
+	FOREIGN KEY(&quot;id_volume&quot;) REFERENCES &quot;Volumes&quot;(&quot;id&quot;)
+);
+</sql><current_tab id="0"/></tab_sql></sqlb_project>

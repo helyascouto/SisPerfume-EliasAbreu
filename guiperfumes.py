@@ -492,8 +492,8 @@ class FrameEssencias ( wx.Frame ):
 		self.txtNome = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizer2.Add( self.txtNome, 1, wx.ALL, 5 )
 
-		self.btnAdicionar = wx.Button( self, wx.ID_ANY, u"Adicionar", wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer2.Add( self.btnAdicionar, 0, wx.ALL, 5 )
+		self.BtnAdicionarEssencias = wx.Button( self, wx.ID_ANY, u"Adicionar", wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer2.Add( self.BtnAdicionarEssencias, 0, wx.ALL, 5 )
 
 
 		bSizer1.Add( bSizer2, 0, wx.EXPAND, 5 )
@@ -542,96 +542,8 @@ class FrameEssencias ( wx.Frame ):
 		self.Centre( wx.BOTH )
 
 		# Connect Events
-		self.btnAdicionar.Bind( wx.EVT_BUTTON, self.adicionarEssencia )
+		self.BtnAdicionarEssencias.Bind( wx.EVT_BUTTON, self.adicionarEssencia )
 		self.gridEssencias.Bind( wx.grid.EVT_GRID_CELL_CHANGED, self.atualizarEssencia )
-
-	def __del__( self ):
-		pass
-
-
-	# Virtual event handlers, overide them in your derived class
-	def adicionarEssencia( self, event ):
-		event.Skip()
-
-	def atualizarEssencia( self, event ):
-		event.Skip()
-
-
-###########################################################################
-## Class AdicionarFrameEssencias
-###########################################################################
-
-class AdicionarFrameEssencias ( wx.Frame ):
-
-	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Adicionar Essencias", pos = wx.DefaultPosition, size = wx.Size( 500,300 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
-
-		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
-
-		bSizer1 = wx.BoxSizer( wx.VERTICAL )
-
-		bSizer2 = wx.BoxSizer( wx.HORIZONTAL )
-
-		self.m_staticText1 = wx.StaticText( self, wx.ID_ANY, u"Descrição:", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText1.Wrap( -1 )
-
-		bSizer2.Add( self.m_staticText1, 0, wx.ALL, 5 )
-
-		self.txtNome = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer2.Add( self.txtNome, 1, wx.ALL, 5 )
-
-		self.btnAdicionar = wx.Button( self, wx.ID_ANY, u"Adicionar", wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer2.Add( self.btnAdicionar, 0, wx.ALL, 5 )
-
-
-		bSizer1.Add( bSizer2, 0, wx.EXPAND, 5 )
-
-		bSizer3 = wx.BoxSizer( wx.VERTICAL )
-
-		self.gridAdicionarEssencias = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
-
-		# Grid
-		self.gridAdicionarEssencias.CreateGrid( 0, 2 )
-		self.gridAdicionarEssencias.EnableEditing( True )
-		self.gridAdicionarEssencias.EnableGridLines( True )
-		self.gridAdicionarEssencias.EnableDragGridSize( False )
-		self.gridAdicionarEssencias.SetMargins( 0, 0 )
-
-		# Columns
-		self.gridAdicionarEssencias.SetColSize( 0, 30 )
-		self.gridAdicionarEssencias.SetColSize( 1, 300 )
-		self.gridAdicionarEssencias.EnableDragColMove( False )
-		self.gridAdicionarEssencias.EnableDragColSize( True )
-		self.gridAdicionarEssencias.SetColLabelSize( 30 )
-		self.gridAdicionarEssencias.SetColLabelValue( 0, u"ID" )
-		self.gridAdicionarEssencias.SetColLabelValue( 1, u"Nome" )
-		self.gridAdicionarEssencias.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
-
-		# Rows
-		self.gridAdicionarEssencias.EnableDragRowSize( True )
-		self.gridAdicionarEssencias.SetRowLabelSize( 80 )
-		self.gridAdicionarEssencias.SetRowLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
-
-		# Label Appearance
-
-		# Cell Defaults
-		self.gridAdicionarEssencias.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
-		self.gridAdicionarEssencias.SetToolTip( u"Pressione Enter para atualizar uma Marca" )
-
-		bSizer3.Add( self.gridAdicionarEssencias, 1, wx.ALL|wx.EXPAND, 5 )
-
-
-		bSizer1.Add( bSizer3, 1, wx.EXPAND, 5 )
-
-
-		self.SetSizer( bSizer1 )
-		self.Layout()
-
-		self.Centre( wx.BOTH )
-
-		# Connect Events
-		self.btnAdicionar.Bind( wx.EVT_BUTTON, self.adicionarEssencia )
-		self.gridAdicionarEssencias.Bind( wx.grid.EVT_GRID_CELL_CHANGED, self.atualizarEssencia )
 
 	def __del__( self ):
 		pass

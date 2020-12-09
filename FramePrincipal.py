@@ -6,7 +6,7 @@ from FrameMarca import FrameMarca
 from FramePerfumes import FramePerfumes
 from FrameVolumes import FrameVolumes
 from FrameFixacoes import FrameFixacoes
-from FrameEssencias import FrameEssencias
+import FrameEssencias
 
 
 # Implementing FramePrincipal
@@ -33,7 +33,7 @@ class FramePrincipal(guiperfumes.FramePrincipal):
 
     def AbrirEssencias(self, event):
         if not self.frameMarca:
-            self.FrameEssencias = FrameEssencias(self)
+            self.FrameEssencias = FrameEssencias.FrameEssencias(self)
         self.FrameEssencias.Show(True)
 
     def abrirVolumes(self, event):
