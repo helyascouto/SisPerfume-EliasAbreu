@@ -110,7 +110,7 @@ class FrameMarca ( wx.Frame ):
 class FrameVolumes ( wx.Frame ):
 
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Volumes", pos = wx.DefaultPosition, size = wx.Size( 500,300 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Volumes", pos = wx.DefaultPosition, size = wx.Size( 438,355 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
 
@@ -127,6 +127,9 @@ class FrameVolumes ( wx.Frame ):
 		bSizer2.Add( self.txtNome, 1, wx.ALL, 5 )
 
 		self.btnAdicionar = wx.Button( self, wx.ID_ANY, u"Adicionar", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.btnAdicionar.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHT ) )
+		self.btnAdicionar.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_WINDOW ) )
+
 		bSizer2.Add( self.btnAdicionar, 0, wx.ALL, 5 )
 
 
@@ -140,6 +143,7 @@ class FrameVolumes ( wx.Frame ):
 		self.gridVolumes.CreateGrid( 0, 2 )
 		self.gridVolumes.EnableEditing( True )
 		self.gridVolumes.EnableGridLines( True )
+		self.gridVolumes.SetGridLineColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_WINDOW ) )
 		self.gridVolumes.EnableDragGridSize( False )
 		self.gridVolumes.SetMargins( 0, 0 )
 
@@ -159,8 +163,11 @@ class FrameVolumes ( wx.Frame ):
 		self.gridVolumes.SetRowLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
 		# Label Appearance
+		self.gridVolumes.SetLabelBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHT ) )
+		self.gridVolumes.SetLabelTextColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BTNFACE ) )
 
 		# Cell Defaults
+		self.gridVolumes.SetDefaultCellBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
 		self.gridVolumes.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
 		self.gridVolumes.SetToolTip( u"Pressione Enter para atualizar uma Marca" )
 
@@ -202,9 +209,11 @@ class FrameVolumes ( wx.Frame ):
 class FramePrincipal ( wx.Frame ):
 
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Sistema de Gestão de Perfumes", pos = wx.DefaultPosition, size = wx.Size( 903,561 ), style = wx.DEFAULT_FRAME_STYLE|wx.MAXIMIZE|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"Sistema de Gestão de Perfumes", pos = wx.DefaultPosition, size = wx.Size( 1207,623 ), style = wx.DEFAULT_FRAME_STYLE|wx.MAXIMIZE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
+		self.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHT ) )
+		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_WINDOW ) )
 
 		self.m_menubar1 = wx.MenuBar( 0 )
 		self.m_menu1 = wx.Menu()
@@ -242,6 +251,17 @@ class FramePrincipal ( wx.Frame ):
 
 		self.SetMenuBar( self.m_menubar1 )
 
+		sbSizer2 = wx.StaticBoxSizer( wx.StaticBox( self, wx.ID_ANY, wx.EmptyString ), wx.VERTICAL )
+
+		self.m_bitmap4 = wx.StaticBitmap( sbSizer2.GetStaticBox(), wx.ID_ANY, wx.Bitmap( u"Imagens/fundo.jpg", wx.BITMAP_TYPE_ANY ), wx.DefaultPosition, wx.DefaultSize, wx.TRANSPARENT_WINDOW )
+		self.m_bitmap4.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHT ) )
+		self.m_bitmap4.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHT ) )
+
+		sbSizer2.Add( self.m_bitmap4, 0, wx.ALL, 1 )
+
+
+		self.SetSizer( sbSizer2 )
+		self.Layout()
 
 		self.Centre( wx.BOTH )
 
