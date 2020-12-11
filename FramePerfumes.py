@@ -43,7 +43,7 @@ class FramePerfumes(guiperfumes.FramePerfumes):
             self.gridPerfumes.DeleteRows(pos=0, numRows=self.gridPerfumes.GetNumberRows())
         for perfume in perfumes:  # Para cada perfume da minha lista, crie uma nova linha, passando os dados retornados
             self.criarLinha(id_perfume=perfume[0], nome_perfume=perfume[1], quantidade=perfume[2], volume=perfume[3],
-                            marca=perfume[4], fixacao=perfume[5])
+                            marca=perfume[4], fixacao=perfume[5], essencias=perfume[5])
 
     def exibirFrame(self, event):
         self.exibirTabela()  # Ao abrir a janela, exiba a lista de perfumes
