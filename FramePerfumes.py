@@ -52,7 +52,7 @@ class FramePerfumes(guiperfumes.FramePerfumes):
     Esse método insere uma nova linha no grid. Caso o parâmetro id_perfume seja None, ele insere uma linha em branco
     '''
 
-    def criarLinha(self, id_perfume=None, nome_perfume=None, quantidade=None, marca=None, fixacao=None, volume=None):
+    def criarLinha(self, id_perfume=None, nome_perfume=None, quantidade=None, marca=None, fixacao=None, volume=None, essencias=None):
         self.gridPerfumes.AppendRows(1)  # Adiciona uma linha
         linha = self.gridPerfumes.GetNumberRows() - 1  # Pega qual o número da linha estamos inserindo
         self.gridPerfumes.SetReadOnly(linha, 0, True)  # Define que a primeira coluna(ID) é do tipo somente leitura
@@ -69,6 +69,8 @@ class FramePerfumes(guiperfumes.FramePerfumes):
                                         wx.grid.GridCellChoiceEditor(choices=db.listarMarcaNome()))
         self.gridPerfumes.SetCellEditor(linha, 5,
                                         wx.grid.GridCellChoiceEditor(choices=db.listarFixacaoNome()))
+        self.gridPerfumes.SetCellEditor(linha, 6,
+                                        wx.grid.GridCellChoiceEditor(choices=db.listarEssenciasNome()))
         if id_perfume:  # Se o id foi passado, significa que podemos atribuir o conteúdo as células do grid
             self.gridPerfumes.SetCellValue(linha, 0, str(id_perfume))
             self.gridPerfumes.SetCellValue(linha, 1, nome_perfume)
@@ -76,6 +78,7 @@ class FramePerfumes(guiperfumes.FramePerfumes):
             self.gridPerfumes.SetCellValue(linha, 3, volume)
             self.gridPerfumes.SetCellValue(linha, 4, marca)
             self.gridPerfumes.SetCellValue(linha, 5, fixacao)
+            self.gridPerfumes.SetCellValue(linha, 6, essencias)
 
     def fecharFrame(self, event):
         self.Show(False)

@@ -123,6 +123,7 @@ def localizarVolumePorNome(nome):
     cursor.close()
     return volume
 
+
 def inserirFixacoes(nome_fixacoes):
     sql = "insert into Fixacoes (nome) values('{0}')".format(nome_fixacoes)
     cursor = banco.cursor()
@@ -153,14 +154,13 @@ def listarFixacoes():
     cursor.close()
     return fixacoes
 
+
 def atualizarFixacoes(id, nome):
     sql = "update Fixacoes set nome='{0}' where id={1}".format(nome, id)
     cursor = banco.cursor()
     cursor.execute(sql)
     banco.commit()
     cursor.close()
-
-
 
 
 def listarFixacao1():
@@ -192,6 +192,27 @@ def listarFixacaoNome():
     for fixacao in nome_fixacoes:
         fixacoes.append(fixacao[0])
     return fixacoes
+
+
+def listarEssenciasNome():
+    sql = "select nome from Essencias order by nome"
+    cursor = banco.cursor()
+    cursor.execute(sql)
+    nome_essencias = cursor.fetchall()
+    cursor.close()
+    essencias = []
+    for essencia in nome_essencias:
+        essencias.append(essencia[0])
+    return essencias
+
+
+def localizarEssenciasPorNome(nome):
+    sql = "select * from Essencias where nome='{0}'".format(nome)
+    cursor = banco.cursor()
+    cursor.execute(sql)
+    essencias = cursor.fetchone()
+    cursor.close()
+    return essencias
 
 
 def inserirEssencia(nome_essencias):
@@ -264,21 +285,30 @@ def salvarPerfumes(listaPerfumes):
         # Se perfume[0] for vazio, ou seja, o id, significa que temos que incliuir o registro
         if perfume[0] == '':
             # As funções localizar buscam o id do volume, marca e fixacao, de forma a garantir a integridade do banco de dados
-            sql = "insert into perfumes (nome,quantidade,id_volume,id_marca,id_fixacao) " \
-                  "values('{0}',{1},{2},{3},{4})".format(perfume[1], perfume[2], localizarVolumePorNome(perfume[3])[0],
-                                                         localizarMarcaPorNome(perfume[4])[0],
-                                                         localizarFixacaoPorNome(perfume[5])[0])
+            sql = "insert into perfumes (nome,quantidade,id_volume,id_marca,id_fixacao,id_essencia) " \
+                  "values('{0}',{1},{2},{3},{4},{5})".format(perfume[1], perfume[2],
+                                                             localizarVolumePorNome(perfume[3])[0],
+                                                             localizarMarcaPorNome(perfume[4])[0],
+                                                             localizarFixacaoPorNome(perfume[5])[0],
+                                                             localizarEssenciasPorNome(perfume[6])[0])
         # Caso contrário, devemos atualizar
         else:
             sql = "update perfumes set nome='{1}',quantidade={2},id_volume={3}," \
-                  "id_marca={4},id_fixacao={5} where id={0}".format(perfume[0], perfume[1], perfume[2],
-                                                                    localizarVolumePorNome(perfume[3])[0],
-                                                                    localizarMarcaPorNome(perfume[4])[0],
-                                                                    localizarFixacaoPorNome(perfume[5])[0])
+                  "id_marca={4},id_fixacao={5},id_essencia={6} where id={0}".format(perfume[0], perfume[1], perfume[2],
+                                                                                    localizarVolumePorNome(perfume[3])[
+                                                                                        0],
+                                                                                    localizarMarcaPorNome(perfume[4])[
+                                                                                        0],
+                                                                                    localizarFixacaoPorNome(perfume[5])[
+                                                                                        0],
+                                                                                    localizarEssenciasPorNome(
+                                                                                        perfume[6])[0])
+
         try:
             cursor.execute(sql)  # Executo a instrução, se der um erro, retorna a mensagem de erro
         except sqlite3.Error as e:
             return False, "Erro ao salvar perfume: " + e.args[0]
+
     banco.commit()  # Se tudo correr bem, confirma as alterações no banco
     cursor.close()  # Fecha a conexão
     return True, None  # Retorna dizendo que deu certo salvar a lista de perfumes

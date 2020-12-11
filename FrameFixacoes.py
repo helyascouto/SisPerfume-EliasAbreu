@@ -14,19 +14,19 @@ class FrameFixacoes(guiperfumes.FrameFixacoes):
    # Handlers for FrameEssencias events.
     def adicionarFixacoes(self, event):
         nome = self.txtNome.GetValue()  # Recupera o conteúdo da caixa de texto
-        db.inserirFixacoes(nome)  # Chama a função inserir marca do arquivo db.py
+        db.inserirFixacoes(nome)  # Chama a função inserir Fixacoes do arquivo db.py
         # Exibe uma mensagem ao usuário confirmado o sucesso na inserção
         wx.MessageBox(message="Fixacoes Inserida com Sucesso", caption="SisPerfumes", style=wx.OK, parent=self)
         self.atualizarGridFixacoes()  # Atualiza o grid com a relação de marcas
 
     def atualizarFixacoes(self, event):
         nome_Fixacoes = self.gridFixacoes.GetCellValue(event.GetRow(),
-                                                        event.GetCol())  # Recupera o nome da marca editado
+                                                        event.GetCol())  # Recupera o nome da Fixacoes editado
 
         if (nome_Fixacoes):  # Se o conteúdo não for vazio, faça
             id_Fixacoes = int(self.gridFixacoes.GetCellValue(event.GetRow(),
                                                               0))  # Pegue na linha editada, o conteúdo da primeira coluna
-        db.atualizarEssencia(id_Fixacoes, nome_Fixacoes)  # Chame a função para atualizar uma marca
+        db.atualizarEssencia(id_Fixacoes, nome_Fixacoes)  # Chame a função para atualizar uma Fixacoes
         wx.MessageBox(message="Fixacoes Atualizada com Sucesso", caption="SysPerfumes", style=wx.OK,
                       parent=self)
 
@@ -34,14 +34,14 @@ class FrameFixacoes(guiperfumes.FrameFixacoes):
         if (self.gridFixacoes.GetNumberRows() > 0):
             self.gridFixacoes.DeleteRows(0, self.gridFixacoes.GetNumberRows())  # Limpa a tabela
 
-        essencias = db.listarFixacoes()  # Chama a função listar marcas, retornando a lista de marcas existentes
+        essencias = db.listarFixacoes()  # Chama a função listar marcas, retornando a lista de Fixacoes existentes
 
         for essencias in essencias:
          self.gridFixacoes.AppendRows(1)  # Adiciona uma linha em branco
          self.gridFixacoes.SetCellValue(self.gridFixacoes.GetNumberRows() - 1, 0,
-                                        str(essencias[0]))  # adicione o id da marca
+                                        str(essencias[0]))  # adicione o id da Fixacoes
          self.gridFixacoes.SetCellValue(self.gridFixacoes.GetNumberRows() - 1, 1,
-                                        essencias[1])  # adiciona o nome da marca
+                                        essencias[1])  # adiciona o nome da Fixacoes
          self.gridFixacoes.SetReadOnly(self.gridFixacoes.GetNumberRows() - 1, 0,
                                        True)  # Informa que a coluna 0(ID) é somente leitura
 

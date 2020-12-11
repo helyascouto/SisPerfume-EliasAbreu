@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:\Users\BUTFIRE\PycharmProjects\SisPerfume-EliasAbreu\dbperfumes-v2.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="0"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="2068"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,16:mainEssencia_Perfume"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1"> CREATE TABLE IF NOT EXISTS &quot;Essencia_Perfume&quot; (
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:\Users\BUTFIRE\PycharmProjects\SisPerfume-EliasAbreu\dbperfumes-v2.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="1"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="2550"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,8:mainFixacoes"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="Essencia_Perfume" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="81"/><column index="2" value="83"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Fixacoes" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="40"/><column index="2" value="43"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">
+CREATE TABLE IF NOT EXISTS &quot;Essencia_Perfume&quot; (
 	&quot;id_perfume&quot;	INTEGER,
 	&quot;id_essencia&quot;	INTEGER,
 	PRIMARY KEY(&quot;id_perfume&quot;,&quot;id_essencia&quot;),
@@ -31,7 +32,9 @@ CREATE TABLE IF NOT EXISTS &quot;Perfumes&quot; (
 	&quot;id_volume&quot;	INTEGER,
 	&quot;id_marca&quot;	INTEGER,
 	&quot;id_fixacao&quot;	INTEGER,
-	FOREIGN KEY(&quot;id_marca&quot;) REFERENCES &quot;Marcas&quot;(&quot;id&quot;),
+	&quot;id_essencia&quot;	INTEGER,
+	FOREIGN KEY(&quot;id_essencia&quot;) REFERENCES &quot;Essencias&quot;(&quot;id&quot;),
+	FOREIGN KEY(&quot;id_marca&quot;) REFERENCES &quot;Marcas&quot;(&quot;id&quot;)
 	FOREIGN KEY(&quot;id_fixacao&quot;) REFERENCES &quot;Fixacoes&quot;(&quot;id&quot;),
 	PRIMARY KEY(&quot;id&quot; AUTOINCREMENT),
 	FOREIGN KEY(&quot;id_volume&quot;) REFERENCES &quot;Volumes&quot;(&quot;id&quot;)

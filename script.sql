@@ -1,4 +1,5 @@
- CREATE TABLE IF NOT EXISTS "Essencia_Perfume" (
+
+CREATE TABLE IF NOT EXISTS "Essencia_Perfume" (
 	"id_perfume"	INTEGER,
 	"id_essencia"	INTEGER,
 	PRIMARY KEY("id_perfume","id_essencia"),
@@ -31,7 +32,9 @@ CREATE TABLE IF NOT EXISTS "Perfumes" (
 	"id_volume"	INTEGER,
 	"id_marca"	INTEGER,
 	"id_fixacao"	INTEGER,
-	FOREIGN KEY("id_marca") REFERENCES "Marcas"("id"),
+	"id_essencia"	INTEGER,
+	FOREIGN KEY("id_essencia") REFERENCES "Essencias"("id"),
+	FOREIGN KEY("id_marca") REFERENCES "Marcas"("id")
 	FOREIGN KEY("id_fixacao") REFERENCES "Fixacoes"("id"),
 	PRIMARY KEY("id" AUTOINCREMENT),
 	FOREIGN KEY("id_volume") REFERENCES "Volumes"("id")

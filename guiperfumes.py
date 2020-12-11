@@ -612,7 +612,7 @@ class FrameEssencias ( wx.Frame ):
 
 		# Connect Events
 		self.Bind( wx.EVT_CLOSE, self.fecharFrame )
-		self.btnAdicionar.Bind( wx.EVT_BUTTON, self.adicionarEssencias )
+		self.btnAdicionar.Bind( wx.EVT_BUTTON, self.adicionarEssencia )
 		self.gridEssencias.Bind( wx.grid.EVT_GRID_CELL_CHANGED, self.atualizarEssencias )
 
 	def __del__( self ):
@@ -623,7 +623,7 @@ class FrameEssencias ( wx.Frame ):
 	def fecharFrame( self, event ):
 		event.Skip()
 
-	def adicionarEssencias( self, event ):
+	def adicionarEssencia( self, event ):
 		event.Skip()
 
 	def atualizarEssencias( self, event ):
