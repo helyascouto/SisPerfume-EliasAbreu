@@ -255,9 +255,10 @@ nome do volume, nome da marca e nome da fixação
 
 def listarPerfumes():
     sql = '''
-        select Perfumes.id, Perfumes.nome,Perfumes.quantidade,Volumes.nome,Marcas.nome,Fixacoes.nome from 
+        select Perfumes.id, Perfumes.nome,Perfumes.quantidade,Volumes.nome,Marcas.nome,Fixacoes.nome,Essencias.nome from 
         Perfumes inner join Volumes on Perfumes.id_volume=Volumes.id 
         inner join Marcas on Perfumes.id_marca=Marcas.id inner join Fixacoes on Perfumes.id_fixacao=Fixacoes.id
+        inner join Essencias on Perfumes.id=Essencias.id
     '''
     cursor = banco.cursor()
     cursor.execute(sql)
